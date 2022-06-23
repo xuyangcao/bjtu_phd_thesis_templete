@@ -1,0 +1,104 @@
+\documentclass[Doctor]{BJTU-thesis}
+
+%%%%%%%%%%%%%%%%%%%引入一些包%%%%%%%%%%%%%%%%%%%%%
+\usepackage{emptypage}
+
+% 字体
+\setromanfont{Times New Roman}
+\usepackage{fontspec}
+\newfontfamily\myfont{times.ttf}
+\setmainfont{Times New Roman}
+\renewcommand\labelenumi{(\theenumi)}
+
+% 标题相关
+\usepackage{bicaption}
+\captionsetup[figure][bi-first]{name=图}
+\captionsetup[figure][bi-second]{name=Figure}
+\captionsetup[table][bi-first]{name=表}
+\captionsetup[table][bi-second]{name=Table}
+
+% 算法相关
+\usepackage[ruled,linesnumbered,algochapter]{algorithm2e}
+\renewcommand{\algorithmcfname}{算法}
+\SetKwInput{KwIn}{输入}
+% \SetKwData{KwData}{输入}
+\SetKwInOut{Return}{返回}
+\SetAlgoNoLine
+% 将编号改为chapter-number
+\makeatletter
+\renewcommand\thealgocf{\csname the\algocf@within\endcsname-\@arabic\c@algocf}
+\makeatother
+
+% 表格
+\usepackage{pifont} % 表格
+\usepackage{diagbox} % 表格
+\usepackage{booktabs}
+\usepackage{chngpage}
+
+% 图片
+\graphicspath{{./figure/}} % 图片
+
+%%%%%%%%%%%%%%%填写封面信息%%%%%%%%%%%%%%%%%%%%
+\author{曹旭阳}
+\studentNumber{17111058}
+\advisor{陈后金}
+\advisorTitle{教授}
+ 
+\degreeType{工学}
+\major{电子科学与技术}
+\researchArea{图像处理与模式识别}
+\title{基于深度学习的三维自动乳腺超声图像分割方法研究}
+\englishtitle{Research on Deep Learning Based 3D Automatic Breast Ultrasound Image Segmentation}
+
+% \makeindex
+\makeindex[name=class,options=-s mystyle,title=分类索引,columns=2]
+\makeindex[name=author,options=-s mystyle,title=著者索引,columns=2]
+\makeindex[name=keyword,options=-s mystyle,title=关键词索引,columns=2]
+
+\begin{document}
+\makecover
+\makeAuthorization
+\makeInfo
+
+\include{chapters/0-thanks}
+\include{chapters/0-abstract}
+% \include{chapters/0-preface}
+\tableofcontents
+
+% 正文部分
+\newpage\pagenumbering{arabic}
+\include{chapters/1-chapt-introduction}
+\include{chapters/1-chapt-basic-theory}
+\include{chapters/1-chapt-d2unet}
+\include{chapters/1-chapter-boundary-loss}
+\include{chapters/1-chapt-nas}
+\include{chapters/1-chapt-uate}
+\include{chapters/1-chapt-summary}
+\bibliography{reference}
+% 正文结束
+
+
+% 附录
+% \appendix
+% \include{chapters/2-appendix}
+
+%% 索引
+% \chapter*{索引}
+% \pagestyle{fancy}
+% \addcontentsline{toc}{chapter}{索引}
+% 678
+% \printindex[class]
+% \addcontentsline{toc}{section}{分类索引}
+% 456
+% \printindex[author]
+% \addcontentsline{toc}{section}{著者索引}
+% 345
+% \printindex[keyword]
+% \addcontentsline{toc}{section}{关键词索引}
+% 123
+
+\include{chapters/2-research}
+\include{chapters/2-declaration}
+\include{chapters/2-dataset}
+
+\end{document}
